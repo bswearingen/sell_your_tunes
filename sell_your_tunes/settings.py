@@ -129,3 +129,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# User uploaded file location (images, recordings)
+# https://docs.djangoproject.com/en/5.1/ref/settings/#std-setting-MEDIA_ROOT
+MEDIA_ROOT = '/sell_your_tunes/media/'
+
+# User uploaded files
+# https://docs.djangoproject.com/en/5.1/ref/settings/#media-url
+MEDIA_URL = '/media/'
