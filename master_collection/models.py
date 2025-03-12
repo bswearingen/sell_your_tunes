@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.core.validators import FileExtensionValidator
+from django.core.validators import FileExtensionValidator, validate_image_file_extension 
 from django.db import models
 
 class Artist(models.Model):
@@ -31,22 +31,24 @@ class Album(models.Model):
     """
     name = models.CharField()
     description = models.TextField(blank=True)
-    release_artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name='release_artist')
-    contributing_artists = models.ManyToManyField(Artist, related_name='contributing_artists', blank=True)
+    release_date = models.DateField()
+    release_artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name='albums')
+    contributing_artists = models.ManyToManyField(Artist, related_name='contributing_albums', blank=True)
     
     # Art
     def art_dir(self, filename):
         return '/'.join([self.release_artist.name, self.name, 'images', filename])
     # TODO: Maximum dimensions and validation
-    album_cover = models.ImageField(upload_to=art_dir, blank=True)
+    album_cover = models.ImageField(upload_to=art_dir, blank=True, validators=[validate_image_file_extension])
     # TODO: Maximum dimensions and validation
-    spine_art = models.ImageField(upload_to=art_dir, blank=True)
+    spine_art = models.ImageField(upload_to=art_dir, blank=True, validators=[validate_image_file_extension])
 
     def __str__(self):
         return self.name
     class Meta:
         # Artists can't repeat album names
         unique_together = ["release_artist", "name"]
+        ordering = ["release_artist", "-release_date"]
 
 class Track(models.Model):
     """
