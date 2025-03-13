@@ -1,0 +1,99 @@
+[
+{
+    "model": "master_collection.artist",
+    "pk": 1,
+    "fields": {
+        "name": "Leviathan Wakes",
+        "bio": "",
+        "origin": "",
+        "profile": "",
+        "banner": "",
+        "members": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ]
+    }
+},
+{
+    "model": "master_collection.artist",
+    "pk": 2,
+    "fields": {
+        "name": "Leviathan Falls",
+        "bio": "",
+        "origin": "",
+        "profile": "",
+        "banner": "",
+        "members": [
+            1,
+            5,
+            6
+        ]
+    }
+},
+{
+    "model": "master_collection.artist",
+    "pk": 3,
+    "fields": {
+        "name": "Persepolis Rising",
+        "bio": "",
+        "origin": "",
+        "profile": "",
+        "banner": "",
+        "members": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "master_collection.artist",
+    "pk": 4,
+    "fields": {
+        "name": "Tiamt's Wrath",
+        "bio": "",
+        "origin": "",
+        "profile": "",
+        "banner": "",
+        "members": [
+            1,
+            6
+        ]
+    }
+},
+{
+    "model": "master_collection.artist",
+    "pk": 5,
+    "fields": {
+        "name": "Babylon's Ashes",
+        "bio": "",
+        "origin": "",
+        "profile": "",
+        "banner": "",
+        "members": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "master_collection.artist",
+    "pk": 6,
+    "fields": {
+        "name": "Caliban's War",
+        "bio": "",
+        "origin": "",
+        "profile": "",
+        "banner": "",
+        "members": [
+            1,
+            2,
+            3,
+            4
+        ]
+    }
+}
+]
