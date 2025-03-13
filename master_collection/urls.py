@@ -15,8 +15,6 @@ urlpatterns = [
     path("albums/<int:album_id>/", views.get_album, name="album"),
     # ex: /collection/artists/5/
     path("artists/<int:artist_id>/", views.get_artist, name="artist"),
-    # ex: /collection/recordings/5/
-    path("recordings/<int:recording_id>/", views.get_recording, name="recording"),
     # ex: /collection/tracks/5/
     path("tracks/<int:track_id>/", views.get_track, name="track"),
 ]

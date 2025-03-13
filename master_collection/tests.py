@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.conf import settings
 
-from .models import Artist, Album, Track, Recording
+from .models import Artist, Album, Track
 
 BASE_URL = settings.HOST
 

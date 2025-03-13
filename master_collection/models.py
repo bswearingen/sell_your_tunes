@@ -1,11 +1,11 @@
 from django.conf import settings
-from django.core.validators import FileExtensionValidator, validate_image_file_extension 
+from django.core.validators import FileExtensionValidator, validate_image_file_extension, MinValueValidator
 from django.db import models
 
 class Artist(models.Model):
     """
     Stores a musical creator: an individual artist, a band, an ensemble, etc.
-    Creates :model:`master_collection.Album` and :model:`master_collection.Recording`.
+    Creates :model:`master_collection.Album` and :model:`master_collection.Track`.
     """
     name = models.CharField(unique=True)
     bio = models.TextField(blank=True)
@@ -27,7 +27,7 @@ class Artist(models.Model):
 
 class Album(models.Model):
     """
-    Stores any collection of recordings: an LP, EP, single, etc.
+    Stores any collection of tracks: an LP, EP, single, etc.
     """
     name = models.CharField()
     description = models.TextField(blank=True)
@@ -52,38 +52,35 @@ class Album(models.Model):
 
 class Track(models.Model):
     """
-    Stores a represenation of a single song or recording. Multiple file types and qualities can be
-    represented with :model:`master_collection.RecordingFile`.
+    Stores a represenation of a single song or track.
     """
     name = models.CharField()
-    order = models.IntegerField()
+    order = models.IntegerField(validators=[MinValueValidator(1)])
     lyrics = models.TextField(blank=True)
-    # Each recording is associated with one album.
+    # Each track is associated with one album.
     # If people want to include the same song in multiple albums, at this point
     # they'll need to re-upload. If this becomes a problem, change this to ManyToManyField
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
 
+    def master_upload_dir(self, filename):
+        return '/'.join([self.album.release_artist.name, self.album.name, self.name, filename])
+    def streamable_upload_dir(self, filename):
+        return '/'.join([self.album.release_artist.name, self.album.name, self.name, filename])
+    master_recording = models.FileField(
+        upload_to=master_upload_dir,
+        validators=[FileExtensionValidator(allowed_extensions=["flac"])],
+        max_length=500
+    )
+    # This should be computed in-server, rather than letting users upload this version themselves.
+    streamable_recording = models.FileField(
+        upload_to=streamable_upload_dir,
+        validators=[FileExtensionValidator(allowed_extensions=["aac"])],
+        blank=True,
+        max_length=500
+    )
     def __str__(self):
         return self.name
     class Meta:
         # Each track has a spot in the album order
         unique_together = ["album", "order"]
         ordering = ["order"]
-
-
-# TODO: Limit the number of recording files per recording.
-class Recording(models.Model):
-    """
-    Stores an individual file for a recording. This allows varying filetypes and qualities.
-    """
-    def upload_dir(self, filename):
-        return '/'.join([self.track.album.release_artist.name, self.track.album.name, self.track.name, filename])
-
-    track = models.ForeignKey(Track, on_delete=models.CASCADE)
-    # TODO: Determine desired filetypes.
-    # TODO: Maximum size.
-    file = models.FileField(
-        upload_to=upload_dir,
-        validators=[FileExtensionValidator(allowed_extensions=["mp3"])]
-    )
-    for_streaming = models.BooleanField(default=False)

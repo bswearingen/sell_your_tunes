@@ -1,13 +1,9 @@
 from django.contrib import admin
 
-from .models import Artist, Album, Track, Recording
+from .models import Artist, Album, Track
 
-class RecordingInline(admin.StackedInline):
+class TrackInline(admin.StackedInline):
     model = Track
-    extra = 0
-
-class RecordingFileInline(admin.StackedInline):
-    model = Recording
     extra = 0
 
 class ArtistAdmin(admin.ModelAdmin):
@@ -18,11 +14,8 @@ class ArtistAdmin(admin.ModelAdmin):
     ]
 
 class AlbumAdmin(admin.ModelAdmin):
-    inlines = [RecordingInline]
-
-class RecordingAdmin(admin.ModelAdmin):
-    inlines = [RecordingFileInline]
+    inlines = [TrackInline]
 
 admin.site.register(Artist, ArtistAdmin)
 admin.site.register(Album, AlbumAdmin)
-admin.site.register(Track, RecordingAdmin)
+admin.site.register(Track)
