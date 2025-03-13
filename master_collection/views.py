@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 import json
 
-from .models import Album
+from .models import Album, Artist
 
 # Endpoints for usecase
 # Get collection of albums (get_albums)
@@ -29,11 +29,20 @@ def get_albums(request):
     for album in Album.objects.all():
         ordered_items.append(
             {
-                "type": "Audio",
-                "name": album.name,
-                "id": BASE_URL + "albums/" + str(album.pk) + "/",
-                "release_date": str(album.release_date),
-                "release_artist": BASE_URL + "artists/" + str(album.release_artist.pk) + "/"
+                "summary": album.release_artist.name + " created an album: " + album.name,
+                "type": "Create",
+                "attributedTo": BASE_URL + "artists/" + str(album.release_artist.pk) + "/",
+                "actor": {
+                    "type": "Group",
+                    "name": album.release_artist.name,
+                    "id": BASE_URL + "artists/" + str(album.release_artist.pk) + "/"
+                },
+                "object": {
+                    "type": "Audio",
+                    "name": album.name,
+                    "id": BASE_URL + "albums/" + str(album.pk) + "/",
+                    "published": str(album.release_date),
+                }
             }
         )
 
