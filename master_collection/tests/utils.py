@@ -9,236 +9,101 @@ BASE_URL = settings.HOST
 -----------------------------------------------------
 |                                                   |
 |                                                   |
-|        Functions for creating test data           |
-|                                                   |
-|                                                   |
------------------------------------------------------
-"""
-def create_users(usernames):
-    users = []
-    for username in usernames:
-        users.append(User.objects.create_user(username=username, password='12345'))
-
-    return users
-
-def create_artists(artist_names, users):
-    artists = []
-    for artist_name in artist_names:
-        artist = Artist.objects.create(name=artist_name)
-        artist.members.set([users.pop(0), users.pop(0)])
-        artists.append(artist)
-
-    return artists
-
-def create_albums(artist, album_names):
-    albums = []
-    for album_name in album_names:
-        album = Album.objects.create(
-            name=album_name,
-            release_date="1990-01-01",
-            release_artist=artist,
-        )
-        albums.append(album)
-    
-    return albums
-
-def create_tracks(album, track_names):
-    i = 1
-    for track_name in track_names:
-        Track.objects.create(
-            name=track_name,
-            order=i,
-            album=album,
-            master_recording=SimpleUploadedFile("its_a_real_song.flac",b"these are the file contents!")
-        )
-        i += 1
-
-
-"""
------------------------------------------------------
-|                                                   |
-|                                                   |
 |        Expected Messages                          |
 |                                                   |
 |                                                   |
 -----------------------------------------------------
 """
-
-expected_get_albums_response = {
+expected_get_album_1_response = {
     "@context": "https://www.w3.org/ns/activitystreams",
-    "summary": "sell_your_tune's master album collection",
+    "id": BASE_URL + "albums/1/",
     "type": "OrderedCollection",
-    "totalItems": 5,
+    "name": "Drive",
+    "summary": "Drive by Leviathan Wakes",
+    "attributedTo": [
+        {
+            "id": BASE_URL + "artists/1/",
+            "type": "Group",
+            "name": "Leviathan Wakes",
+        },
+        {
+            "id": BASE_URL + "artists/5/",
+            "type": "Group",
+            "name": "Babylon's Ashes",
+        },
+    ],
+    "totalItems": 2,
     "orderedItems": [
         {
-            "summary": "One Time created an album: 1st Album",
-            "type": "Create",
-            "attributedTo": BASE_URL + "artists/2/",
-            "actor": {
-                "type": "Group",
-                "name": "One Time",
-                "id": BASE_URL + "artists/2/",
-            },
-            "object": {
-                "type": "Audio",
-                "name": "1st Album",
-                "id": BASE_URL + "albums/1/",
-                "published": "1990-01-01",
+            "id": BASE_URL + "tracks/3/",
+            "type": "Audio",
+            "name": "Symphony No. 1",
+            "url": {
+                "type": "Link",
+                "href": BASE_URL + settings.MEDIA_URL + "/Leviathan Wakes/Drive/Symphony No. 1.aac",
+                "mediaType": "audio/aac"
             }
         },
         {
-            "summary": "Multipack created an album: 2nd Album",
-            "type": "Create",
-            "attributedTo": BASE_URL + "artists/3/",
-            "actor": {
-                "type": "Group",
-                "name": "Multipack",
-                "id": BASE_URL + "artists/3/",
-            },
-            "object": {
-                "type": "Audio",
-                "name": "2nd Album",
-                "id": BASE_URL + "albums/2/",
-                "published": "1990-01-01",
+            "id": BASE_URL + "tracks/4/",
+            "type": "Audio",
+            "name": "String Quartet",
+            "url": {
+                "type": "Link",
+                "href": BASE_URL + settings.MEDIA_URL + "/Leviathan Wakes/Drive/String Quartet.aac",
+                "mediaType": "audio/aac"
             }
         },
-        {
-            "summary": "Multipack created an album: 3rd Album",
-            "type": "Create",
-            "attributedTo": BASE_URL + "artists/3/",
-            "actor": {
-                "type": "Group",
-                "name": "Multipack",
-                "id": BASE_URL + "artists/3/",
-            },
-            "object": {
-                "type": "Audio",
-                "name": "3rd Album",
-                "id": BASE_URL + "albums/3/",
-                "published": "1990-01-01",
-            }
-        },
-        {
-            "summary": "Multipack created an album: 4th Album",
-            "type": "Create",
-            "attributedTo": BASE_URL + "artists/3/",
-            "actor": {
-                "type": "Group",
-                "name": "Multipack",
-                "id": BASE_URL + "artists/3/",
-            },
-            "object": {
-                "type": "Audio",
-                "name": "4th Album",
-                "id": BASE_URL + "albums/4/",
-                "published": "1990-01-01",
-            }
-        },
-        {
-            "summary": "Multipack created an album: 5th Album",
-            "type": "Create",
-            "attributedTo": BASE_URL + "artists/3/",
-            "actor": {
-                "type": "Group",
-                "name": "Multipack",
-                "id": BASE_URL + "artists/3/",
-            },
-            "object": {
-                "type": "Audio",
-                "name": "5th Album",
-                "id": BASE_URL + "albums/5/",
-                "published": "1990-01-01",
-            }
-        },
-    ]
-} 
-
-expected_get_artists_response = {
-    "@context": "https://www.w3.org/ns/activitystreams",
-    "summary": "sell_your_tune's master artist collection",
-    "type": "OrderedCollection",
-    "totalItems": 3,
-    "orderedItems": [
-        {
-            "summary": "NoAlbum1 created a new band: No Album",
-            "type": "Create",
-            "attributedTo": BASE_URL + "1/",
-            "actor": {
-                "type": "Person",
-                "name": "NoAlbum1",
-                "id": BASE_URL + "1/",
-            },
-            "object": {
-                "type": "Group",
-                "name": "No Album",
-                "id": BASE_URL + "artists/1/",
-            }
-        },
-        {
-            "summary": "OneTime1 created a new band: One Time",
-            "type": "Create",
-            "attributedTo": BASE_URL + "3/",
-            "actor": {
-                "type": "Person",
-                "name": "OneTime1",
-                "id": BASE_URL + "3/",
-            },
-            "object": {
-                "type": "Group",
-                "name": "One Time",
-                "id": BASE_URL + "artists/2/",
-            }
-        },
-        {
-            "summary": "Multipack1 created a new band: Multipack",
-            "type": "Create",
-            "attributedTo": BASE_URL + "5/",
-            "actor": {
-                "type": "Person",
-                "name": "Multipack1",
-                "id": BASE_URL + "5/",
-            },
-            "object": {
-                "type": "Group",
-                "name": "Multipack",
-                "id": BASE_URL + "artists/3/",
-            }
-        },
-    ]
-} 
-
-expected_get_album_response = {
-    "summary": "One Time created an album: 1st Album",
-    "type": "Create",
-    "attributedTo": BASE_URL + "artists/2/",
-    "actor": {
-        "type": "Group",
-        "name": "One Time",
-        "id": BASE_URL + "artists/2/",
-    },
-    "object": {
-        "type": "Audio",
-        "name": "1st Album",
-        "id": BASE_URL + "albums/1/",
-        "published": "1990-01-01",
-        "attachment":[
-            # TODO: Include tracks here
-        ]
-    }
+    ],
 }
 
-expected_get_artist_response = {
-    "summary": "NoAlbum1 created a new band: No Album",
-    "type": "Create",
-    "attributedTo": BASE_URL + "1/",
-    "actor": {
-        "type": "Person",
-        "name": "NoAlbum1",
-        "id": BASE_URL + "1/",
-    },
-    "object": {
-        "type": "Group",
-        "name": "No Album",
-        "id": BASE_URL + "artists/1/",
+expected_get_artist_1_response = {
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": BASE_URL + "artists/1/",
+    "type": "Group",
+    "name": "Leviathan Wakes",
+    "attributedTo": [
+        {
+            "type": "Person",
+            "id": BASE_URL + "users/1/",
+            "name": "Amos Burton",
+        },
+        {
+            "type": "Person",
+            "id": BASE_URL + "users/4/",
+            "name": "Bobbie Draper",
+        },
+        {
+            "type": "Person",
+            "id": BASE_URL + "users/6/",
+            "name": "Clarissa Mao",
+        },
+        {
+            "type": "Person",
+            "id": BASE_URL + "users/2/",
+            "name": "James Holden",
+        },
+        {
+            "type": "Person",
+            "id": BASE_URL + "users/3/",
+            "name": "Naomi Nagata",
+        },
+        {
+            "type": "Person",
+            "id": BASE_URL + "users/5/",
+            "name": "Shed Garvey",
+        },
+    ],
+}
+
+expected_get_track_1_response = {
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": BASE_URL + "tracks/1/",
+    "type": "Audio",
+    "name": "String Quartet No. 6",
+    "url": {
+        "type": "Link",
+        "href": BASE_URL + settings.MEDIA_URL + "/Leviathan Wakes/The Last Flight of the Cassandra/String Quartet No. 6.aac",
+        "mediaType": "audio/aac"
     }
 }
