@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.core.validators import FileExtensionValidator, validate_image_file_extension, MinValueValidator
 from django.db import models
+from django.core.files import File
+from pydub import AudioSegment
 
 class Artist(models.Model):
     """
@@ -63,15 +65,18 @@ class Track(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
 
     def master_upload_dir(self, filename):
-        return '/'.join([self.album.release_artist.name, self.album.name, self.name, filename])
+        return '/'.join([self.album.release_artist.name, self.album.name, self.name + ".flac"])
     def streamable_upload_dir(self, filename):
-        return '/'.join([self.album.release_artist.name, self.album.name, self.name, filename])
+        return '/'.join([self.album.release_artist.name, self.album.name, self.name + ".aac"])
+    
+    # TODO: Automatically remove old versions
     master_recording = models.FileField(
         upload_to=master_upload_dir,
         validators=[FileExtensionValidator(allowed_extensions=["flac"])],
         max_length=500
     )
-    # This should be computed in-server, rather than letting users upload this version themselves.
+    # TODO: This should be computed in-server, rather than letting users upload this version themselves.
+    # TODO: Automatically remove old versions
     streamable_recording = models.FileField(
         upload_to=streamable_upload_dir,
         validators=[FileExtensionValidator(allowed_extensions=["aac"])],

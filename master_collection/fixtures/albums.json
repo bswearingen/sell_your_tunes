@@ -9,7 +9,9 @@
             "release_artist": 1,
             "album_cover": "",
             "spine_art": "",
-            "contributing_artists": []
+            "contributing_artists": [
+                5
+            ]
         }
     },
     {

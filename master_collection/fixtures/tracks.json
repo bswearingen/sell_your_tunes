@@ -8,7 +8,7 @@
         "lyrics": "",
         "album": 4,
         "master_recording": "Leviathan Wakes/The Last Flight of the Cassandra/String Quartet No. 6/LudwigVanBeetho_GViOF3Q.6.flac",
-        "streamable_recording": ""
+        "streamable_recording": "Leviathan Wakes/The Last Flight of the Cassandra/String Quartet No. 6/LudwigVanBeetho_GViOF3Q.6.flac"
     }
 },
 {
@@ -20,7 +20,7 @@
         "lyrics": "",
         "album": 4,
         "master_recording": "Leviathan Wakes/The Last Flight of the Cassandra/Goldberg Variations/JohannSebastianBac_t67zaGM.flac",
-        "streamable_recording": ""
+        "streamable_recording": "Leviathan Wakes/The Last Flight of the Cassandra/Goldberg Variations/JohannSebastianBac_t67zaGM.flac"
     }
 },
 {
@@ -31,8 +31,8 @@
         "order": 1,
         "lyrics": "",
         "album": 1,
-        "master_recording": "Leviathan Wakes/Drive/Symphony No. 1/JohannesBrahms-SymphonyNo.1InCMinor.flac",
-        "streamable_recording": ""
+        "master_recording": "Leviathan Wakes/Drive/Symphony No. 1.flac",
+        "streamable_recording": "Leviathan Wakes/Drive/Symphony No. 1.aac"
     }
 },
 {
@@ -43,8 +43,8 @@
         "order": 2,
         "lyrics": "",
         "album": 1,
-        "master_recording": "Leviathan Wakes/Drive/String Quartet/AlexanderBorodin-StringQuartetNo.2.flac",
-        "streamable_recording": ""
+        "master_recording": "Leviathan Wakes/Drive/String Quartet.flac",
+        "streamable_recording": "Leviathan Wakes/Drive/String Quartet.aac"
     }
 },
 {
@@ -56,7 +56,7 @@
         "lyrics": "",
         "album": 3,
         "master_recording": "Leviathan Wakes/The Butcher of Anderson Station/Symphony No. 3/JohannesBrahms-SymphonyNo.3.flac",
-        "streamable_recording": ""
+        "streamable_recording": "Leviathan Wakes/The Butcher of Anderson Station/Symphony No. 3/JohannesBrahms-SymphonyNo.3.flac"
     }
 },
 {
@@ -68,7 +68,7 @@
         "lyrics": "",
         "album": 3,
         "master_recording": "Leviathan Wakes/The Butcher of Anderson Station/Symphony No. 4/FelixMendelssohn-SymphonyNo.4.flac",
-        "streamable_recording": ""
+        "streamable_recording": "Leviathan Wakes/The Butcher of Anderson Station/Symphony No. 4/FelixMendelssohn-SymphonyNo.4.flac"
     }
 },
 {
@@ -80,7 +80,7 @@
         "lyrics": "",
         "album": 2,
         "master_recording": "Caliban's War/The Churn/Russian Easter Festival/NikolaiRimsky-korsakov-RussianEaster_2YVj7Hf.36.flac",
-        "streamable_recording": ""
+        "streamable_recording": "Caliban's War/The Churn/Russian Easter Festival/NikolaiRimsky-korsakov-RussianEaster_2YVj7Hf.36.flac"
     }
 },
 {
@@ -92,7 +92,7 @@
         "lyrics": "",
         "album": 2,
         "master_recording": "Caliban's War/The Churn/String Quartet No. 6/FelixMendelssohn-St_LpWnjrw.6InFMinorOp.80-04-Fuga.flac",
-        "streamable_recording": ""
+        "streamable_recording": "Caliban's War/The Churn/String Quartet No. 6/FelixMendelssohn-St_LpWnjrw.6InFMinorOp.80-04-Fuga.flac"
     }
 },
 {
@@ -104,7 +104,7 @@
         "lyrics": "",
         "album": 2,
         "master_recording": "Caliban's War/The Churn/Marriage of Figaro/WolfgangAmadeusMozart-MarriageOfFigaro.flac",
-        "streamable_recording": ""
+        "streamable_recording": "Caliban's War/The Churn/Marriage of Figaro/WolfgangAmadeusMozart-MarriageOfFigaro.flac"
     }
 }
 ]
