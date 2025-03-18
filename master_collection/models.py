@@ -2,6 +2,7 @@ from django.conf import settings
 from django.core.validators import FileExtensionValidator, validate_image_file_extension, MinValueValidator
 from django.db import models
 from django.core.files import File
+from django.core.files.storage import FileSystemStorage
 
 class Artist(models.Model):
     """
@@ -19,9 +20,17 @@ class Artist(models.Model):
     def art_dir(self, filename):
         return '/'.join([self.name, 'images', filename])
     # TODO: Maximum dimensions and validation
-    profile = models.ImageField(upload_to=art_dir, blank=True)
+    profile = models.ImageField(
+        upload_to=art_dir, 
+        blank=True,
+        storage=FileSystemStorage(allow_overwrite=True)
+    )
     # TODO: Maximum dimensions and validation
-    banner = models.ImageField(upload_to=art_dir, blank=True)
+    banner = models.ImageField(
+        upload_to=art_dir, 
+        blank=True,
+        storage=FileSystemStorage(allow_overwrite=True)
+    )
 
     def __str__(self):
         return self.name
@@ -40,9 +49,18 @@ class Album(models.Model):
     def art_dir(self, filename):
         return '/'.join([self.release_artist.name, self.name, 'images', filename])
     # TODO: Maximum dimensions and validation
-    album_cover = models.ImageField(upload_to=art_dir, blank=True, validators=[validate_image_file_extension])
+    album_cover = models.ImageField(
+        upload_to=art_dir, blank=True, 
+        validators=[validate_image_file_extension],
+        storage=FileSystemStorage(allow_overwrite=True)
+    )
     # TODO: Maximum dimensions and validation
-    spine_art = models.ImageField(upload_to=art_dir, blank=True, validators=[validate_image_file_extension])
+    spine_art = models.ImageField(
+        upload_to=art_dir, 
+        blank=True, 
+        validators=[validate_image_file_extension],
+        storage=FileSystemStorage(allow_overwrite=True)
+    )
 
     def __str__(self):
         return self.name
@@ -68,19 +86,19 @@ class Track(models.Model):
     def streamable_upload_dir(self, filename):
         return '/'.join([self.album.release_artist.name, self.album.name, self.name + ".aac"])
     
-    # TODO: Automatically remove old versions
     master_recording = models.FileField(
         upload_to=master_upload_dir,
         validators=[FileExtensionValidator(allowed_extensions=["flac"])],
-        max_length=500
+        max_length=500,
+        storage=FileSystemStorage(allow_overwrite=True)
     )
     # TODO: This should be computed in-server, rather than letting users upload this version themselves.
-    # TODO: Automatically remove old versions
     streamable_recording = models.FileField(
         upload_to=streamable_upload_dir,
         validators=[FileExtensionValidator(allowed_extensions=["aac"])],
         blank=True,
-        max_length=500
+        max_length=500,
+        storage=FileSystemStorage(allow_overwrite=True)
     )
     def __str__(self):
         return self.name
