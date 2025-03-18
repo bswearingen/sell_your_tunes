@@ -70,16 +70,5 @@ def get_artist(request, artist_id):
 
 def get_track(request, track_id): 
     track = get_object_or_404(Track, pk=track_id)
-    result = {
-        "@context": "https://www.w3.org/ns/activitystreams",
-        "id": '/'.join([settings.HOST, "tracks", str(track_id), '']),
-        "type": "Audio",
-        "name": track.name,
-    }
-    if track.streamable_recording:
-        result["url"] = {
-            "type": "Link",
-            "href": settings.HOST + track.streamable_recording.url,
-            "mediaType": "audio/aac"
-        }
-    return JsonResponse(result)
+    track.activitypub()
+    return JsonResponse(track.activitypub())

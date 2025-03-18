@@ -1,6 +1,7 @@
 from django.core.validators import FileExtensionValidator, MinValueValidator
 from django.db import models
 from django.core.files.storage import FileSystemStorage
+from django.conf import settings
 
 from .album import Album
 
@@ -37,6 +38,25 @@ class Track(models.Model):
     )
     def __str__(self):
         return self.name
+    
+    def activitypub(self, top_level=True):
+        obj = {
+            "id": '/'.join([settings.HOST, "tracks", str(self.pk), '']),
+            "type": "Audio",
+            "name": self.name,
+        }
+            
+        if top_level:
+            obj["@context"] = "https://www.w3.org/ns/activitystreams"
+        if self.streamable_recording:
+            obj["url"] = {
+                "type": "Link",
+                "href": settings.HOST + self.streamable_recording.url,
+                "mediaType": "audio/aac",
+            }
+        
+        return obj
+    
     class Meta:
         # Each track has a spot in the album order
         unique_together = ["album", "order"]
