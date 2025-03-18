@@ -75,10 +75,11 @@ def get_track(request, track_id):
         "id": '/'.join([settings.HOST, "tracks", str(track_id), '']),
         "type": "Audio",
         "name": track.name,
-        "url": {
+    }
+    if track.streamable_recording:
+        result["url"] = {
             "type": "Link",
             "href": settings.HOST + track.streamable_recording.url,
             "mediaType": "audio/aac"
         }
-    }
     return JsonResponse(result)
