@@ -2,7 +2,6 @@ from django.conf import settings
 from django.core.validators import FileExtensionValidator, validate_image_file_extension, MinValueValidator
 from django.db import models
 from django.core.files import File
-from pydub import AudioSegment
 
 class Artist(models.Model):
     """
