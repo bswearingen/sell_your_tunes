@@ -10,4 +10,5 @@ def streamable_file_creation(sender, instance, **kwargs):
         pass
     else:
         if not track.master_recording == instance.master_recording:
+            # TODO: Kick off Celery background task to create a new streamable
             print("New master!")
