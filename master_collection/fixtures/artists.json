@@ -4,10 +4,10 @@
     "pk": 1,
     "fields": {
         "name": "Leviathan Wakes",
-        "bio": "",
+        "bio": "Ice-hauling detectives",
         "origin": "",
-        "profile": "",
-        "banner": "",
+        "profile": "Leviathan Wakes/Images/Icon.jpg",
+        "banner": "Leviathan Wakes/The Images/Banner.jpg",
         "members": [
             1,
             2,
@@ -39,10 +39,10 @@
     "pk": 3,
     "fields": {
         "name": "Persepolis Rising",
-        "bio": "",
-        "origin": "",
-        "profile": "",
-        "banner": "",
+        "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "origin": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,.",
+        "profile": "Persepolis Rising/Images/Icon.jpg",
+        "banner": "Persepolis Rising/Images/Banner.jpg",
         "members": [
             2,
             3
@@ -69,10 +69,10 @@
     "pk": 5,
     "fields": {
         "name": "Babylon's Ashes",
-        "bio": "",
-        "origin": "",
-        "profile": "",
-        "banner": "",
+        "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "origin": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,.",
+        "profile": "Babylon's Ashes/Images/Icon.jpg",
+        "banner": "Babylon's Ashes/Images/Banner.jpg",
         "members": [
             1,
             4
