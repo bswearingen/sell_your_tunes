@@ -103,7 +103,7 @@ expected_get_track_1_response = {
     "name": "String Quartet No. 6",
     "url": {
         "type": "Link",
-        "href": BASE_URL + settings.MEDIA_URL + "Leviathan%20Wakes/The%20Last%20Flight%20of%20the%20Cassandra/String%20Quartet%20No.%206/LudwigVanBeetho_GViOF3Q.6.flac",
+        "href": BASE_URL + settings.MEDIA_URL + "Leviathan%20Wakes/The%20Last%20Flight%20of%20the%20Cassandra/String%20Quartet%20No.%206.aac",
         "mediaType": "audio/aac"
     }
 }
