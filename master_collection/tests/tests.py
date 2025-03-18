@@ -19,6 +19,8 @@ class DereferencingViewsTest(TestCase):
     def test_get_album(self):
         response = self.client.get(reverse("album", args=[1]))
         self.assertEqual(response.status_code, 200)
+        print(response.content)
+        print(json.dumps(expected_get_album_1_response))
         self.assertJSONEqual(response.content, json.dumps(expected_get_album_1_response))
         
     def test_get_artist(self):

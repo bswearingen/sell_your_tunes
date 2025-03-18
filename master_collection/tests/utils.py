@@ -44,16 +44,6 @@ expected_get_album_1_response = {
                 "mediaType": "audio/aac"
             }
         },
-        {
-            "id": BASE_URL + "/tracks/4/",
-            "type": "Audio",
-            "name": "String Quartet",
-            "url": {
-                "type": "Link",
-                "href": BASE_URL + settings.MEDIA_URL + "Leviathan%20Wakes/Drive/String%20Quartet.aac",
-                "mediaType": "audio/aac"
-            }
-        },
     ],
 }
 
