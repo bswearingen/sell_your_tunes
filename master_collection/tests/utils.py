@@ -59,7 +59,7 @@ expected_get_album_1_response = {
 
 expected_get_artist_1_response = {
     "@context": "https://www.w3.org/ns/activitystreams",
-    "id": BASE_URL + "artists/1/",
+    "id": BASE_URL + "/artists/1/",
     "type": "Group",
     "name": "Leviathan Wakes",
     "attributedTo": [
@@ -67,16 +67,6 @@ expected_get_artist_1_response = {
             "type": "Person",
             "id": BASE_URL + "/users/1/",
             "name": "Amos Burton",
-        },
-        {
-            "type": "Person",
-            "id": BASE_URL + "/users/4/",
-            "name": "Bobbie Draper",
-        },
-        {
-            "type": "Person",
-            "id": BASE_URL + "/users/6/",
-            "name": "Clarissa Mao",
         },
         {
             "type": "Person",
@@ -90,8 +80,18 @@ expected_get_artist_1_response = {
         },
         {
             "type": "Person",
+            "id": BASE_URL + "/users/4/",
+            "name": "Bobbie Draper",
+        },
+        {
+            "type": "Person",
             "id": BASE_URL + "/users/5/",
             "name": "Shed Garvey",
+        },
+        {
+            "type": "Person",
+            "id": BASE_URL + "/users/6/",
+            "name": "Clarissa Mao",
         },
     ],
 }

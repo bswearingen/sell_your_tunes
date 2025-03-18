@@ -55,7 +55,27 @@ def get_album(request, album_id):
             })
     result["orderedItems"] = tracks
     return JsonResponse(result)
+
+
 def get_artist(request, artist_id):
-    return HttpResponse("Hello, world. You're at the get_artist endpoint. You queried: " + str(artist_id))
+    artist = get_object_or_404(Artist, pk=artist_id)
+    result = {
+        "@context": "https://www.w3.org/ns/activitystreams",
+        "id":  '/'.join([settings.HOST, "artists", str(artist_id), '']),
+        "type": "Group",
+        "name": artist.name,
+    }
+    attributed_to = []
+    for member in artist.members.all():
+        attributed_to.append(
+            {
+                "type": "Person",
+                "id": '/'.join([settings.HOST, "users", str(member.pk), '']),
+                "name": member.username,
+            }
+        )
+    result["attributedTo"] = attributed_to
+
+    return JsonResponse(result)
 def get_track(request, track_id): 
     return HttpResponse("Hello, world. You're at the get_track endpoint.. You queried: " + str(track_id))
