@@ -85,15 +85,3 @@ expected_get_artist_1_response = {
         },
     ],
 }
-
-expected_get_track_1_response = {
-    "@context": "https://www.w3.org/ns/activitystreams",
-    "id": BASE_URL + "/tracks/1/",
-    "type": "Audio",
-    "name": "String Quartet No. 6",
-    "url": {
-        "type": "Link",
-        "href": BASE_URL + settings.MEDIA_URL + "Leviathan%20Wakes/The%20Last%20Flight%20of%20the%20Cassandra/String%20Quartet%20No.%206.aac",
-        "mediaType": "audio/aac"
-    }
-}
