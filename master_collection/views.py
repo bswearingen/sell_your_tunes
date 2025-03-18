@@ -6,15 +6,6 @@ from .models import Album, Artist, Track
 
 from django.conf import settings
 
-# Endpoints for usecase
-# Get collection of albums (get_albums)
-# Dereference album (get_album)
-# Derefernece track (get_track)
-
-# Get collection of artists (get_artists)
-# Dereference artist (get_artist)
-# Dereference album [see above.]
-
 def get_album(request, album_id): 
     album = get_object_or_404(Album, pk=album_id)
     result = {
@@ -31,7 +22,6 @@ def get_album(request, album_id):
         "type": "Group",
         "name": album.release_artist.name,
     }]
-    print(album.contributing_artists.all())
     for artist in album.contributing_artists.all():
         contributing_artists.append({
             "id": '/'.join([settings.HOST, "artists", str(artist.pk), '']),
@@ -77,5 +67,18 @@ def get_artist(request, artist_id):
     result["attributedTo"] = attributed_to
 
     return JsonResponse(result)
+
 def get_track(request, track_id): 
-    return HttpResponse("Hello, world. You're at the get_track endpoint.. You queried: " + str(track_id))
+    track = get_object_or_404(Track, pk=track_id)
+    result = {
+        "@context": "https://www.w3.org/ns/activitystreams",
+        "id": '/'.join([settings.HOST, "tracks", str(track_id), '']),
+        "type": "Audio",
+        "name": track.name,
+        "url": {
+            "type": "Link",
+            "href": settings.HOST + track.streamable_recording.url,
+            "mediaType": "audio/aac"
+        }
+    }
+    return JsonResponse(result)
