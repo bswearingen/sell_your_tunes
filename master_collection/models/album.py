@@ -1,6 +1,7 @@
 from django.core.validators import validate_image_file_extension
 from django.db import models
 from django.core.files.storage import FileSystemStorage
+from django.conf import settings
 
 from .artist import Artist
 class Album(models.Model):
@@ -32,6 +33,30 @@ class Album(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def activitypub(self, top_level=True):
+        obj = {
+            "id": '/'.join([settings.HOST, "albums", str(self.pk), '']),
+            "type": "OrderedCollection",
+            "name": self.name,
+            "published": self.release_date,
+        }
+        
+        attributed_to = [self.release_artist.activitypub()]
+        for member in self.contributing_artists.all():
+            attributed_to.append(member.activitypub())
+        obj["attributedTo"] = attributed_to
+
+        obj["totalItems"] = self.track_set.count()
+        ordered_items = []
+        for track in self.track_set.all():
+            ordered_items.append(
+                track.activitypub()
+            )
+        
+        if top_level:
+            obj["@context"] = "https://www.w3.org/ns/activitystreams"
+        return obj
     class Meta:
         # Artists can't repeat album names
         unique_together = ["release_artist", "name"]

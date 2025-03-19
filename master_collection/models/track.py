@@ -45,15 +45,16 @@ class Track(models.Model):
             "type": "Audio",
             "name": self.name,
         }
-            
-        if top_level:
-            obj["@context"] = "https://www.w3.org/ns/activitystreams"
+        
         if self.streamable_recording:
             obj["url"] = {
                 "type": "Link",
                 "href": settings.HOST + self.streamable_recording.url,
                 "mediaType": "audio/aac",
             }
+
+        if top_level:
+            obj["@context"] = "https://www.w3.org/ns/activitystreams"
         
         return obj
     

@@ -6,8 +6,10 @@
         "name": "Leviathan Wakes",
         "bio": "Ice-hauling detectives",
         "origin": "Montréal",
-        "profile": "Leviathan Wakes/Images/icon.jpg",
-        "banner": "Leviathan Wakes/The Images/banner.jpg",
+        "profile": "Leviathan Wakes/images/icon.jpg",
+        "profile_alt_text": "A picture of Leviathan Wakes",
+        "banner": "Leviathan Wakes/images/banner.jpg",
+        "banner_alt_text": "A banner picture of Leviathan Wakes",
         "members": [
             1,
             2,
@@ -41,8 +43,10 @@
         "name": "Persepolis Rising",
         "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "origin": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,.",
-        "profile": "Persepolis Rising/Images/icon.jpg",
-        "banner": "Persepolis Rising/Images/banner.jpg",
+        "profile": "Persepolis Rising/images/icon.jpg",
+        "profile_alt_text": "A picture of Persepolis Rising",
+        "banner": "Persepolis Rising/images/banner.jpg",
+        "banner_alt_text": "A banner of Persepolis Rising",
         "members": [
             2,
             3
@@ -71,8 +75,10 @@
         "name": "Babylon's Ashes",
         "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "origin": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,.",
-        "profile": "Babylon's Ashes/Images/icon.jpg",
-        "banner": "Babylon's Ashes/Images/banner.jpg",
+        "profile": "Babylon's Ashes/images/icon.jpg",
+        "profile_alt_text": "A picture of Babylon's Ashes.",
+        "banner": "Babylon's Ashes/images/banner.jpg",
+        "banner_alt_text": "A banner of Babylon's Ashes",
         "members": [
             1,
             4
