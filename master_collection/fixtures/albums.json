@@ -4,11 +4,13 @@
         "pk": 1,
         "fields": {
             "name": "Drive",
-            "description": "",
+            "description": "Drive by Leviathan Wakes ft. Babylon's Ashes",
             "release_date": "2012-11-27",
             "release_artist": 1,
             "album_cover": "Leviathan Wakes/Drive/images/cover.jpg",
+            "album_cover_alt_text": "A picture of Drive",
             "spine_art": "Leviathan Wakes/Drive/images/spine.jpg",
+            "spine_art_alt_text": "A spine picture of Drive",
             "contributing_artists": [
                 5
             ]
@@ -40,7 +42,9 @@
             "release_date": "2011-10-17",
             "release_artist": 1,
             "album_cover": "Leviathan Wakes/The Butcher of Anderson Station/images/cover.jpg",
+            "album_cover_alt_text": "A picture of The Butcher of Anderson Station",
             "spine_art": "Leviathan Wakes/The Butcher of Anderson Station/images/spine.jpg",
+            "spine_art_alt_text": "A spine picture of The Butcher of Anderson Station",
             "contributing_artists": [
                 1
             ]
@@ -51,7 +55,7 @@
         "pk": 4,
         "fields": {
             "name": "The Last Flight of the Cassandra",
-            "description": "",
+            "description": "The Last Flight of the Cassandra by Leviathan Wakes ft. Leviathan Wakes",
             "release_date": "2019-05-14",
             "release_artist": 1,
             "album_cover": "",

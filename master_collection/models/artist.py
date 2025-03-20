@@ -72,13 +72,12 @@ class Artist(models.Model):
                 "name": self.origin,
                 "type": "Place"
             }
-        
-        members = []
-        for member in self.members.all():
-            members.append(user_to_activitypub(member, top_level=False))
-        obj["attributedTo"] = members
 
         if top_level:
             obj["@context"] = "https://www.w3.org/ns/activitystreams"
+            members = []
+            for member in self.members.all():
+                members.append(user_to_activitypub(member, top_level=False))
+            obj["attributedTo"] = members
         
         return obj
