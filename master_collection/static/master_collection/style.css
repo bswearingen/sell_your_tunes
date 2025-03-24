@@ -1,0 +1,25 @@
+/* .library {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1vmin;
+}
+
+.album {
+    display: flex;
+    flex-direction: column;
+    width: 15vmin;
+    height: 15vmin;
+}
+
+.album-name {
+    margin-bottom: 0;
+}
+.album-by-line {
+    margin-top: 0;
+}
+
+.album-cover {
+    width: 10vmin;
+    height: 10vmin;
+} */
