@@ -2,7 +2,8 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, JsonResponse
 import json
 from django.views import generic
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Album, Artist, Track
 
@@ -27,7 +28,7 @@ def get_track(request, track_id):
 # They'll only have access to their own items
 # List view, detail view, CRUD view,
 
-class IndexView(LoginRequiredMixin, generic.ListView):
+class AlbumsView(LoginRequiredMixin, generic.ListView):
     template_name = "master_collection/index.html"
     login_url = "/accounts/login/"
     next_page = "/albums/"
@@ -41,3 +42,8 @@ def get_my_albums(request):
     # If not redirect to login flow
     # ListView of albums
     return NotImplementedError
+
+class AlbumCreate(PermissionRequiredMixin, CreateView):
+    model = Album
+    fields = '__all__'
+    permission_required = 'master_collection.add_album'

@@ -4,23 +4,17 @@
 <div class="library">
 {% if object_list %}
 {% for album in object_list %}
-    {% if forloop.counter0 == 0 or forloop.counter0|divisibleby:"3"%}
-    <div class="row">
+    {% if album.album_cover %}
+        <div class="album" 
+            style="background-image: url({{album.album_cover.url}});"
+            href="{% url 'master_collection:albums' %}"
+        >
+    {% else %}
+        <div class="album">
     {% endif %}
-    <div class="col-sm-3 album">
-        {% if album.album_cover %}
-            {% if album.album_cover_alt_text %}
-                <img class="img-thumbnail" src="{{album.album_cover.url}}" alt="{{album.album_cover_alt_text}}"/>
-            {% else %}
-                <img class="img-thumbnail" src="{{album.album_cover.url}}"/>
-            {% endif %}
-        {% endif %}
-        <p class="album-name">{{album.name}}</p>
-        <p class="album-by-line">by {{album.release_artist.name}}</p>
-    </div>
-    {% if forloop.counter0 == 2 or forloop.last%}
-    </div>
-    {% endif %}
+            <p class="album-name">{{album.name}}</p>
+            <p class="album-by-line"> - by {{album.release_artist.name}}</p>
+        </div>
 {% endfor %}
 {% else %}
 <p>No albums available</p>
